@@ -1,3 +1,15 @@
+customer = input("welcome to the bank of plug" 
+                "\nClick 1 to withdraw money"
+                "\n click 2 to add money to the account"
+                "\n click 3 to quit\n")
+if customer =="1":
+    balance = int(input("your balance here"))
+    withdraw = int(input("how much would you like to withdraw"))
+    if balance < withdraw:
+        print("account overdraft balance", (balance - withdraw))
+    else:
+        print("your new balance:", (balance - withdraw))
+
 import csv
 
 class client:
