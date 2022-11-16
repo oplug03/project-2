@@ -1,12 +1,12 @@
 import csv
-print("welcome")
-user_id = range(1, 100, 1,)
-id = int(input("please enter user id"))
-customer = input("welcome to the bank of plug"
-                 "\n to see details type show_details()"
-                 "\n to add funds type add_funds()"
-                 "\n to withdraw type withdraw()"
-                 "\n to see account balance type see_balance()\n")
+# print("welcome")
+# user_id = range(1, 100, 1,)
+# id = int(input("please enter user id"))
+# customer = input("welcome to the bank of plug"
+#                  "\n to see details type show_details()"
+#                  "\n to add funds type add_funds()"
+#                  "\n to withdraw type withdraw()"
+#                  "\n to see account balance type see_balance()\n")
 #parent class
 class client:
     def __init__(self, customer_id, first_name, last_name,
@@ -29,7 +29,7 @@ class bank:
                   birth_date, gender,):
         super().__init__(customer_id, first_name, last_name,
                          birth_date, gender,)
-        self.balance = 0
+        self.balance = int()
 
     def add_funds(self,amount):
         self.balance = self.balance + self.amount
@@ -40,7 +40,7 @@ class bank:
             print("you have entered your overdraft current balance is",
                   self.balance - self.amount)
         else:
-            self.balance - self.amount
+            self.balance -= self.amount
             print("balance has been updated new balance is",
                   self.balance)
     def see_balance(self):
@@ -59,7 +59,14 @@ class client_manager:
     def get_client(self):
         return self.client
 
-
+    def clients_in_overdraft(self, balance):
+        over_draft = []
+        for client in self.client:
+            if int(balance) < 0:
+                over_draft.append(client)
+        return over_draft
+bank_user = client_manager()
+bank_user.clients_in_overdraft(100)
 
 
 
