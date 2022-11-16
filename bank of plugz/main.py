@@ -48,14 +48,16 @@ class bank:
         print("current account balance  : £", self.balance)
 
 
+class client_manager:
+    def __innit__(self):
+        self.client = []
+        with open("clients.csv", "r") as f:
+            for line in f:
+                parts = line.strip().split(",")
+                self.client.append(client(parts[1],parts[0],parts[4],parts[3]))
 
-with open("clients.csv") as file:
-    reader = csv.reader(file)
-
-    count = 0
-
-    for row in reader:
-        print(row)
+    def get_client(self):
+        return self.client
 
 
 
