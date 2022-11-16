@@ -49,20 +49,13 @@ class bank:
 
 
 
-def read(self):
+with open("clients.csv") as file:
+    reader = csv.reader(file)
 
+    count = 0
 
-    filename = "clients.csv"
-    rows = []
-
-    with open(filename, 'r') as csvfile:
-        csvreader = csv.reader(csvfile)
-
-
-    for row in csvreader:
-            rows.append(row)
-
-    print(rows)
+    for row in reader:
+        print(row)
 
 
 
