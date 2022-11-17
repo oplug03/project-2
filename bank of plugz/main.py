@@ -53,25 +53,26 @@ class client_manager:
                 #parts = line.strip().split(",")
                 #self.client.append(client(parts[1],parts[2],parts[3],parts[4],parts[5]))
                 self.client.append(line)
-            print(self.client)
+
 
 
     def get_client(self):
         return self.client
 
-    def clients_in_overdraft(self, balance):
+    def clients_in_overdraft(self):
         self.create_list()
         final = []
-        #overdraft = [y[8] for y in self.client]
+
         for i in range(1,len(self.client)):
             test = self.client[i][8]
-            overdraft = int(test)
-            if overdraft < 0:
+            overdraft = -abs(int(self.client[i][9]))
+            balance = int(test)
+            if balance < overdraft :
                 final.append(str(self.client[i][2]))
         print(final)
 bank_user = client_manager()
 bank_user.create_list()
-bank_user.clients_in_overdraft(100)
+bank_user.clients_in_overdraft()
 
 # print("welcome")
 # user_id = range(1, 100, 1,)
